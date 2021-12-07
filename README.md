@@ -2,7 +2,7 @@
 This is a Online Employee Data Base Mangement System created using php, html, css. 
 The code is copyright by Wyyne Wu. 
 
-The features this Employee Records Management Systems are: 
+The features this Employee Records Management Systems are:                            
 •	User friendly. Easy to use and no training required                   
 •	System is compatible with most of the web browsers                    
 •	Save users’ time                            
