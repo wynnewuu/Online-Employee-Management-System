@@ -7,7 +7,7 @@ The features this Employee Records Management Systems are:
 •	System is compatible with most of the web browsers                    
 •	Save users’ time                            
 •	System is highly interactive                
-•	Reduce paper work                   
+•	Reduce paper work                                 
 •	Result is highly accurate                                 
 •	Data manger can view all the records whenever                               
 •	The System can easily get upgraded to do more functionalities                   
