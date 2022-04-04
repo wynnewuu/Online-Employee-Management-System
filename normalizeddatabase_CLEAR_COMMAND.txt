@@ -1,0 +1,267 @@
+CREATE TABLE EMPLOYEE(
+Fname VARCHAR(15) NOT NULL, 
+Minit CHAR, 
+Lname VARCHAR(15) NOT NULL, 
+Ssn CHAR(9) NOT NULL, 
+Bdate DATE, 
+Address VARCHAR(30), 
+Sex CHAR, 
+Salary DECIMAL (10,2), 
+Super_ssn CHAR(9), 
+Dno INT NOT NULL, 
+PRIMARY KEY (Ssn));
+
+INSERT INTO EMPLOYEE
+VALUES('James', 'A', 'Wu', '123456789', TO_DATE('03/01/1900','DD/MM/YYYY'), '1234 Happy Street', 'M', 5000,'23');
+INSERT INTO EMPLOYEE
+VALUES('Abi', 'C', 'Jack', '756123850', TO_DATE('01/05/1901','DD/MM/YYYY'), '1618 Gogo Street', 'M', 2000, '19');
+INSERT INTO EMPLOYEE
+VALUES('Aaron', 'C', 'Walker', '746125852', TO_DATE('02/01/1903','DD/MM/YYYY'), '1842 Rage Street', 'M', 3000, '20');
+INSERT INTO EMPLOYEE
+VALUES('Kim', 'J', 'Wallen', '123452146', TO_DATE('01/05/1950','DD/MM/YYYY'), '1111 Meridian Street', 'M', 5500, '13');
+INSERT INTO EMPLOYEE
+VALUES('Maddy', 'M', 'Balcom', '452146985', TO_DATE('06/01/1950','DD/MM/YYYY'), '1364 Geroge Street', 'F', 4000, '11');
+INSERT INTO EMPLOYEE
+VALUES('Fiona', 'D', 'Fuserlier', '601459631', TO_DATE('07/01/1906','DD/MM/YYYY'), '2461 Brown Street', 'F', 5000, '68');
+INSERT INTO EMPLOYEE
+VALUES('Colin', 'N', 'Parnell', '146857039', TO_DATE('01/08/1901','DD/MM/YYYY'), '1046 Yonge Street', 'M', 2500, '43');
+INSERT INTO EMPLOYEE
+VALUES('Dave', 'J', 'Siu', '129468521', TO_DATE('01/07/1913','DD/MM/YYYY'), '1918 Starforce Street', 'M', 5000, '82');
+INSERT INTO EMPLOYEE
+VALUES('Geroge', 'L', 'Chen', '326485014', TO_DATE('04/01/1926','DD/MM/YYYY'), '1224 James Street', 'M', 5000, '34');
+INSERT INTO EMPLOYEE
+VALUES('Jim', 'B', 'Wong', '214035821', TO_DATE('09/08/1921','DD/MM/YYYY'), '1334 Hanna Street', 'M', 5000, '10');
+
+
+INSERT INTO EMPLOYEE
+VALUES('James', 'A', 'Wu', '123456789', '1900-03-01', '1234 Happy Street', 'M', 5000,'23');
+INSERT INTO EMPLOYEE
+VALUES('Abi', 'C', 'Jack', '756123850', '1901-01-05', '1618 Gogo Street', 'M', 2000, '19');
+INSERT INTO EMPLOYEE
+VALUES('Aaron', 'C', 'Walker', '746125852', '1903-02-01', '1842 Rage Street', 'M', 3000, '20');
+INSERT INTO EMPLOYEE
+VALUES('Kim', 'J', 'Wallen', '123452146', '1950-01-05', '1111 Meridian Street', 'M', 5500, '13');
+INSERT INTO EMPLOYEE
+VALUES('Maddy', 'M', 'Balcom', '452146985', '1950-06-01', '1364 Geroge Street', 'F', 4000, '11');
+INSERT INTO EMPLOYEE
+VALUES('Fiona', 'D', 'Fuserlier', '601459631', '1906-07-01', '2461 Brown Street', 'F', 5000, '68');
+INSERT INTO EMPLOYEE
+VALUES('Colin', 'N', 'Parnell', '146857039', '1901-01-08', '1046 Yonge Street', 'M', 2500, '43');
+INSERT INTO EMPLOYEE
+VALUES('Dave', 'J', 'Siu', '129468521', '1913-01-07', '1918 Starforce Street', 'M', 5000, '82');
+INSERT INTO EMPLOYEE
+VALUES('Geroge', 'L', 'Chen', '326485014', '1926-04-01', '1224 James Street', 'M', 5000, '34');
+INSERT INTO EMPLOYEE
+VALUES('Jim', 'B', 'Wong', '214035821', '1921-09-08', '1334 Hanna Street', 'M', 5000, '10');
+
+CREATE TABLE DEPARTMENT(
+Dname VARCHAR(15) NOT NULL, 
+Dno INT NOT NULL, 
+Ssn CHAR(9) NOT NULL,  
+Mgr_startdate DATE, 
+UNIQUE (Dname);
+
+alter table DEPARTMENT 
+add constraint DEPARTMENT_Dnumber primary key (Dnumber);
+
+
+INSERT INTO DEPARTMENT
+VALUES('CS', '13', '452146985', '1900-09-01');
+INSERT INTO DEPARTMENT
+VALUES('Math', '11', '601459631', '1910-09-01');
+INSERT INTO DEPARTMENT
+VALUES('Nursing', '10', '129468521', '1905-09-01');
+INSERT INTO DEPARTMENT
+VALUES('Research', '34', '214035821',  '1981-06-09');
+
+CREATE TABLE DEPT_LOCATIONS(
+Dnumber INT NOT NULL, 
+Dlocation VARCHAR(15) NOT NULL, 
+PRIMARY KEY (Dnumber, Dlocation), 
+FOREIGN KEY (Dnumber) REFERENCES DEPARTMENT(Dnumber));
+
+
+INSERT INTO DEPT_LOCATIONS
+VALUES('13', 'Detroit') ;
+INSERT INTO DEPT_LOCATIONS
+VALUES('11', 'Houston') ;
+INSERT INTO DEPT_LOCATIONS
+VALUES('10', 'Walkergate') ;
+INSERT INTO DEPT_LOCATIONS
+VALUES('34', 'Kingsville') ;
+
+
+CREATE TABLE Project(
+Pname VARCHAR(15) NOT NULL, 
+Pnumber INT NOT NULL, 
+Plocation VARCHAR(15), 
+Dnum INT NOT NULL, 
+PRIMARY KEY (Pnumber), UNIQUE (Pname));
+
+INSERT INTO Project
+VALUES('Endless Runner', '115','Library', '13') ;
+INSERT INTO Project
+VALUES('Blood Pressure', '105','Home', '34') ;
+
+
+
+CREATE TABLE WORKS_ON(
+Essn CHAR(9) NOT NULL, 
+Pno INT NOT NULL, 
+Hours DECIMAL(3,1) NOT NULL, 
+PRIMARY KEY (Essn, Pno), 
+FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn), 
+FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber));
+
+INSERT INTO WORKS_ON
+VALUES('123456789', '115','8.00') ;
+INSERT INTO WORKS_ON
+VALUES('214035821', '105','9.00') ;
+INSERT INTO WORKS_ON
+VALUES('452146985', '115','6.00') ;
+INSERT INTO WORKS_ON
+VALUES('129468521', '105','9.00') ;
+INSERT INTO WORKS_ON
+VALUES('746125852', '105','6.00') ;
+INSERT INTO WORKS_ON
+VALUES('146857039', '115','6.00') ;
+
+
+CREATE TABLE DEPENDENT
+(Essn CHAR(9) NOT NULL, 
+Dependent_name VARCHAR(15) NOT NULL, 
+Sex CHAR, 
+Bdate DATE,
+Relationship VARCHAR(8), 
+PRIMARY KEY (Essn, Dependent_name), 
+FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn));
+
+
+INSERT INTO DEPENDENT
+VALUES('123456789', 'Andy Wei', 'M', '1903-02-01', 'Spouse');
+INSERT INTO DEPENDENT
+VALUES('756123850', 'Kevin La', 'M', '1921-09-08', 'Spouse');
+INSERT INTO DEPENDENT
+VALUES('746125852', 'Jason Wu', 'M', '1950-06-01', 'Son');
+
+DROP TABLE DEPENDENT;
+
+CREATE TABLE DEPENDENT
+(Essn CHAR(9) NOT NULL, 
+Dependent_name VARCHAR(15) NOT NULL, 
+Sex CHAR, 
+Bdate DATE,
+Relationship VARCHAR(8), 
+PRIMARY KEY (Essn, Dependent_name), 
+FOREIGN KEY (Essn) REFERENCES EMPLOYEE(Ssn));
+
+
+INSERT INTO DEPENDENT
+VALUES('123456789', 'Andy Wei', 'M', TO_DATE('02/01/1903','DD/MM/YYYY'), 'Spouse');
+INSERT INTO DEPENDENT
+VALUES('756123850', 'Kevin La', 'M', TO_DATE('09/08/1921','DD/MM/YYYY'), 'Spouse');
+INSERT INTO DEPENDENT
+VALUES('746125852', 'Jason Wu', 'M', TO_DATE('06/01/1950','DD/MM/YYYY'), 'Son');
+
+
+
+select * from EMPLOYEE;
+FNAME           M LNAME           SSN       BDATE
+--------------- - --------------- --------- ---------
+ADDRESS                        S     SALARY SUPER_SSN        DNO
+------------------------------ - ---------- --------- ----------
+James           A Wu              123456789 03-JAN-00
+1234 Happy Street              M       5000 ABCDEFGHI         23
+
+Fiona           D Fuserlier       601459631 07-JAN-06
+2461 Brown Street              F       5000 null              68
+
+Abi             C Jack            756123850 01-MAY-01
+1618 Gogo Street               M       2000 888661111         19
+
+
+FNAME           M LNAME           SSN       BDATE
+--------------- - --------------- --------- ---------
+ADDRESS                        S     SALARY SUPER_SSN        DNO
+------------------------------ - ---------- --------- ----------
+Aaron           C Walker          746125852 02-JAN-03
+1842 Rage Street               M       3000 555555555         20
+
+Kim             J Wallen          123452146 01-MAY-50
+1111 Meridian Street           M       5500 111111111         13
+
+Maddy           M Balcom          452146985 06-JAN-50
+1364 Geroge Street             F       4000 222222555         11
+
+
+FNAME           M LNAME           SSN       BDATE
+--------------- - --------------- --------- ---------
+ADDRESS                        S     SALARY SUPER_SSN        DNO
+------------------------------ - ---------- --------- ----------
+Colin           N Parnell         146857039 01-AUG-01
+1046 Yonge Street              M       2500 444444444         43
+
+Dave            J Siu             129468521 01-JUL-13
+1918 Starforce Street          M       5000 666666666         82
+
+Geroge          L Chen            326485014 04-JAN-26
+1224 James Street              M       5000 111555554         34
+
+
+FNAME           M LNAME           SSN       BDATE
+--------------- - --------------- --------- ---------
+ADDRESS                        S     SALARY SUPER_SSN        DNO
+------------------------------ - ---------- --------- ----------
+Jim             B Wong            214035821 09-AUG-21
+1334 Hanna Street              M       5000 666555555         10
+
+
+select * from DEPARTMENT;
+DNAME              DNUMBER    SSN   MGR_START
+--------------- ---------- --------- ---------
+CS                      13 452146985 09-JAN-00
+Math                    11 601459631 09-JAN-10
+Nursing                 10 129468521 09-JAN-05
+Research                34 214035821 06-SEP-81
+
+
+select * from DEPT_LOCATIONS;
+   DNUMBER DLOCATION
+---------- ---------------
+        10 Walkergate
+        11 Houston
+        13 Detroit
+        34 Kingsville
+
+select * from Project;
+PNAME              PNUMBER PLOCATION          DNUMBER
+--------------- ---------- --------------- ----------
+Endless Runner         115 Library                 13
+Blood Pressure         105 Home                    34
+
+select * from WORKS_ON;
+ESSN             PNO      HOURS
+--------- ---------- ----------
+123456789        115          8
+214035821        105          9
+452146985        115          6
+129468521        105          9
+746125852        105          6
+146857039        115          6
+
+
+
+select * from DEPENDENT;
+ESSN      DEPENDENT_NAME  S BDATE     RELATION
+--------- --------------- - --------- --------
+123456789 Andy Wei        M 02-JAN-03 Spouse
+756123850 Kevin La        M 09-AUG-21 Spouse
+746125852 Jason Wu        M 06-JAN-50 Son
+
+
+DROP TABLE DEPENDENT;
+DROP TABLE WORKS_ON;
+DROP TABLE PROJECT;
+DROP TABLE DEPT_LOCATIONS;
+DROP TABLE DEPARTMENT;
+DROP TABLE EMPLOYEE;
