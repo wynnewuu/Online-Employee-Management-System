@@ -22,4 +22,4 @@ Designed and created my own Company database scheme through SQLplus (Back-end Da
 ![Everything Is AWESOME](https://imgur.com/3sGAE8B.png)]
 
 Sample of SQL queries in phpMyAdmin (Back-end Database)
-![Everything Is AWESOME](https://imgur.com/a/kZWZyHu)]
+![Everything Is AWESOME](https://i.imgur.com/dKEXzGl.jpg)]
