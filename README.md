@@ -20,3 +20,6 @@ Here is the access to the Online Employee Management System
 
 Designed and created my own Company database scheme through SQLplus (Back-end Database)
 ![Everything Is AWESOME](https://imgur.com/3sGAE8B.png)]
+
+Sample of SQL queries in phpMyAdmin (Back-end Database)
+![Everything Is AWESOME](https://imgur.com/a/kZWZyHu)]
